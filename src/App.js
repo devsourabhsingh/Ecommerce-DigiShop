@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./FashionHome/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
+import "react-loading-skeleton/dist/skeleton.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NewProductListing from "./Products/NewProductListing";
+import ProductDetail from "./Products/ProductDetail";
+import GetAllCart from "./FashionHome/GetAllCart";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 function App() {
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SkeletonTheme>
+        <Router>
+          <Home />
+          <Routes>
+            <Route path="/" element={<NewProductListing />} />
+            <Route path="/product/:productId" element={<ProductDetail />} />
+            <Route path="/getallcart" element={<GetAllCart />} />
+            <Route> 404 Not Found </Route>
+          </Routes>
+        </Router>
+      </SkeletonTheme>
     </div>
   );
 }

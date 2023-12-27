@@ -1,38 +1,182 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #f1f3f4 !important;
+  /* font-family: "Inter", sans-serif !important; */
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.new-nav-shadow {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px;
+  border-radius: 20px !important;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-bar {
+  outline: none !important;
+  border: 1px solid rgb(245, 245, 245);
+  background-color: #f1f3f4 !important;
+  border-radius: 30px;
+  padding-left: 3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.navbar-head {
+  margin-top: 1rem;
+  border-radius: 20px !important;
+  background-color: white;
+}
+.new-input::placeholder {
+  opacity: 0.8;
+}
+.three-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 2.5rem;
+}
+.new-img-card {
+  border: none !important;
+  border-radius: 20px !important;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.new-fashion {
+  width: 5rem;
+}
+.new-dropdown-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+.new-btn-search {
+  background-color: #f1f3f4 !important;
+  /* outline: none;
+  border: none; */
+  border-left: none !important;
+  border: 1px solid rgb(245, 245, 245);
+  position: relative;
+  border-radius: 30px;
+}
+.bi-search {
+  font-size: 1rem;
+  padding-right: 1rem;
+  color: rgb(211, 211, 211);
+}
+.new-dress-img {
+  width: 10rem !important;
+  height: 10rem !important;
+}
+.single-product-card {
+  width: 70rem !important;
+  height: 30rem !important;
+  margin: auto;
+  border: none !important;
+}
+.new-detail-image {
+  width: 20rem !important;
+  height: 20rem !important;
+}
+.new-detail-shadow {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px;
+  background-color: white;
+  border-radius: 20px !important;
+}
+.new-category-detail {
+  display: inline-block;
+  background-color: rgba(158, 199, 40, 0.145098);
+  color: #9ec728;
+  font-weight: 400;
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+.deatil-fashion-category {
+  margin-bottom: 0;
+  padding: 0rem 1rem 0rem 1rem;
+}
+.bi-arrow-left-circle-fill {
+  font-size: 2rem !important;
+  cursor: pointer;
+  color: black;
+}
+.bi-cart4 {
+  font-size: 2.4rem;
+}
+.btn-cart {
+  background-color: #0071ce;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.new-shop-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.close-shop {
+  font-size: 1.5rem;
+  padding: 0px 5px 0px 5px;
+}
+.close-shop:hover {
+  background-color: #dee2e4;
+  border-radius: 20px;
+}
+.collect-item {
+  font-size: 1.5rem;
+  padding: 0px 5px 0px 5px;
+}
+.minus-icon {
+  color: red;
+}
+.add-icon:hover {
+  background-color: #d5e5f1;
+  border-radius: 20px;
+}
+.minus-icon:hover {
+  background-color: rgba(234, 121, 57, 0.145);
+  border-radius: 20px;
+}
+.input-select:focus {
+  border-color: #d5e5f1 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+.number-total-item {
+  width: 5rem !important;
+  outline: none !important;
+  border: 1px solid #d5e5f1 !important;
+  padding-left: 1.7rem;
+}
+.empty-search-found {
+  width: 30rem;
+  height: 30rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  background-color: white;
+  border-radius: 20px;
+}
+.promo-code {
+  color: #298cde;
+  font-weight: 500;
+  font-size: 13px;
+
+  border-radius: 20px;
+  margin-bottom: 0;
+}
+.apply-code {
+  border: none;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  padding: 0px 5px 0px 5px;
+  font-weight: 500;
+}
+.apply-code:hover {
+  background-color: rgb(79, 97, 94);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.new-count-number {
+  margin-bottom: 0.9rem !important;
+  font-weight: 500;
 }
