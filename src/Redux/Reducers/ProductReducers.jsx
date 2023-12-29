@@ -43,6 +43,11 @@ export const addToCartReducers = (state = initalState, { type, payload }) => {
         ...state,
         cartData: state.cartData.filter((carts) => carts.id !== payload),
       };
+    case ActionType.ALL_CART_REMOVE:
+      return {
+        ...state,
+        cartData: [],
+      };
     case ActionType.INCREMENT:
       return {
         ...state,

@@ -180,3 +180,20 @@ body {
   margin-bottom: 0.9rem !important;
   font-weight: 500;
 }
+.modal-order-center {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center !important;
+}
+.check-icon {
+  font-size: 3rem;
+  font-weight: 900 !important;
+  color: green;
+}
+.new-cart-shadow {
+  border: none !important;
+  outline: none !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px !important;
+}

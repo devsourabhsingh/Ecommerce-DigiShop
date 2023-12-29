@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { allRemoveCart } from "../Redux/Actions/ProductActions";
+
 const OrderPlace = ({ totalSum }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [totalNumber, setTotalNumber] = useState(0);
   const [applyCode, setApplyCode] = useState("");
   const cart = useSelector((state) => state.addCart.cartData);
@@ -9,13 +14,13 @@ const OrderPlace = ({ totalSum }) => {
     const totalValue = totalSum + selectedNumber;
     setTotalNumber(totalValue);
   };
-  const handlePlaceClick = () => {
-    if (cart.length === 0) {
-      alert("please Select Product");
-    } else {
-      alert("Place order Successfully");
-    }
-  };
+  // const handlePlaceClick = () => {
+  //   if (cart.length === 0) {
+  //     alert("please Select Product");
+  //   } else {
+  //     alert("Place order Successfully");
+  //   }
+  // };
   const handleApplyChange = (event) => {
     setApplyCode(event.target.value);
   };
@@ -29,7 +34,6 @@ const OrderPlace = ({ totalSum }) => {
     const finalPrice = (10 / 100) * totalSum;
     const discountPrice = totalSum - finalPrice;
     const roundPrice = Math.round(discountPrice);
-    console.log(roundPrice);
     if (applyCode === "DIGI10") {
       setTotalNumber(roundPrice);
     } else {
@@ -42,6 +46,11 @@ const OrderPlace = ({ totalSum }) => {
     applyGift();
   };
 
+  const handelContinueShopping = () => {
+    dispatch(allRemoveCart());
+    navigate("/");
+  };
+  
   return (
     <>
       <div className="col-lg-4 bg-grey">
@@ -51,7 +60,7 @@ const OrderPlace = ({ totalSum }) => {
 
           <div className="d-flex justify-content-between mb-4">
             <h5 className="text-uppercase">items {cart.length}</h5>
-            <h5>$ {totalSum}</h5>
+            <h5>$ {totalSum?.toFixed(2)}</h5>
           </div>
           <h5 className="text-uppercase mb-3">Shipping Charges</h5>
 
@@ -91,16 +100,48 @@ const OrderPlace = ({ totalSum }) => {
 
           <div className="d-flex justify-content-between mb-5">
             <h5 className="text-uppercase">Total price</h5>
-            <h5>$ {totalNumber}</h5>
+            <h5>$ {totalNumber.toFixed(2)}</h5>
           </div>
           <button
             type="button"
-            className="btn btn-dark btn-block btn-lg"
-            data-mdb-ripple-color="dark"
-            onClick={handlePlaceClick}
+            className="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
           >
             Place Order
           </button>
+          <div
+            className="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className=" modal-order-center">
+                  <i className="bi bi-check-circle check-icon"></i>
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    Order Confirmed!
+                  </h1>
+                </div>
+
+                <p className="text-center opacity-50">
+                  Your order has been placed Successfully.
+                </p>
+                <div className=" d-flex justify-content-center pb-5">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    onClick={handelContinueShopping}
+                  >
+                    Continue Shopping
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

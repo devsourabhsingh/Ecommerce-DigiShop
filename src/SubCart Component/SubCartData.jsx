@@ -5,15 +5,18 @@ import {
   setDecrease,
   removeCart,
 } from "../Redux/Actions/ProductActions";
+import toast from "react-hot-toast";
 
 const SubCartData = ({ id, image, price, category, title, newCart }) => {
   const dispatch = useDispatch();
   const handleCountClick = (item) => {
     dispatch(setIncrease(item));
+    toast.success("increase Quantity");
   };
 
   const handleMinusClick = (item) => {
     dispatch(setDecrease(item));
+    toast.success("less Quantity");
   };
   const handleRemoveCart = (id) => {
     dispatch(removeCart(id));

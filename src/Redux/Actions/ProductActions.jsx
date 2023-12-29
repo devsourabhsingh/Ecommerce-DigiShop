@@ -29,6 +29,11 @@ export const removeCart = (id) => {
     payload: id,
   };
 };
+export const allRemoveCart = () => {
+  return {
+    type: ActionType.ALL_CART_REMOVE,
+  };
+};
 export const setIncrease = (id) => {
   return {
     type: ActionType.INCREMENT,

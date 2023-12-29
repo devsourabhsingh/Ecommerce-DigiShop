@@ -19,7 +19,7 @@ const GetAllCart = () => {
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12">
               <div
-                className="card card-registration card-registration-2"
+                className="card card-registration card-registration-2 new-cart-shadow"
                 style={{ borderRadius: "15px" }}
               >
                 <div className="card-body p-0">

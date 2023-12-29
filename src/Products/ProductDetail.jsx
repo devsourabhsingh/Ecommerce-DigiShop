@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 import {
   selectedProducts,
   addToCart,
@@ -12,14 +13,18 @@ import SkeletonEffect from "../Skeleton/SkeletonEffect";
 
 const ProductDetail = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isButtonDisable, setIsButtonDisable] = useState(false);
+
   const { productId } = useParams();
   const selectProduct = useSelector(
-    (state) => state.singleProduct.selectedProduct
-  );
+    (state) => state.singleProduct.selectedProduct);
+
+  const getCartData = useSelector((state) => state.addCart.cartData);
+
   const { id, title, price, image, category, description } =
     selectProduct || {};
   const dispatch = useDispatch();
-
+  const cartMatch = getCartData.find((item) => item.id === id);
   useEffect(() => {
     dispatch(removeProducts());
     setIsLoading(true);
@@ -34,7 +39,12 @@ const ProductDetail = () => {
   }, [productId, dispatch]);
 
   const handleAddToCart = () => {
-    dispatch(addToCart(selectProduct));
+    if (cartMatch) {
+      setIsButtonDisable(true);
+    } else {
+      toast.success("Item Added");
+      dispatch(addToCart(selectProduct));
+    }
   };
 
   return (
@@ -74,10 +84,16 @@ const ProductDetail = () => {
                       </div>
                       <p className=" mt-3">{description}</p>
                     </div>
+
                     <button
                       type="button"
-                      className="btn-cart rounded-5 border-0 text-white"
-                      onClick={handleAddToCart}
+                      className={`${
+                        isButtonDisable || cartMatch
+                          ? "btn btn-secondary"
+                          : "btn-cart"
+                      } rounded-5 border-0 text-white`}
+                      onClick={() => handleAddToCart(id)}
+                      disabled={isButtonDisable}
                     >
                       Add to Cart
                     </button>

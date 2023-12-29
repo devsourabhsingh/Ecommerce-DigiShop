@@ -9,11 +9,12 @@ import NewProductListing from "./Products/NewProductListing";
 import ProductDetail from "./Products/ProductDetail";
 import GetAllCart from "./FashionHome/GetAllCart";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  
   return (
     <div className="App">
+      <Toaster position="top-right" />
       <SkeletonTheme>
         <Router>
           <Home />
